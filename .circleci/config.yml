@@ -5,6 +5,16 @@ orbs:
   node: circleci/node@2
   heroku: circleci/heroku@1.0.0
 
+# setupでまとめる
+commands:
+  setup:
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+
 jobs:
   build:
     docker:
@@ -62,7 +72,6 @@ workflows:
           - build
       - deploy:
         requires:
-          - build
           - test
         filters:
           branches:
