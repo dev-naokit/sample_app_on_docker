@@ -18,7 +18,7 @@ commands:
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.6.3-node
+      - image: cimg/ruby:2.6.3-stretch
     steps:
       - checkout
       - ruby/install-deps
