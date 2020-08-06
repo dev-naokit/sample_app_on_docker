@@ -53,9 +53,9 @@ jobs:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
       - run:
-        name: Rspec
-        command: bundle exec rspec
-  
+          name: Rspec
+          command: bundle exec rspec
+
 
   deploy:
     executor: heroku/default
