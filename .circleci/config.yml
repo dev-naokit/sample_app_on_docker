@@ -68,11 +68,12 @@ workflows:
     jobs:
       - build
       - test:
-        requires:
-          - build
+          requires:
+            - build
       - deploy:
-        requires:
-          - test
-        filters:
+          requires:
+            - build
+            - test
+          filters:
           branches:
             only: master
