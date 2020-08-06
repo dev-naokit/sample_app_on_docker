@@ -20,11 +20,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.3-node
     steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
+      - setup
   test:
     docker:
       - image: circleci/ruby:2.6.3-node
@@ -41,11 +37,7 @@ jobs:
       PGPASSWORD: ""
       RAILS_ENV: test
     steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
+      - setup
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -66,7 +58,6 @@ jobs:
       - run:
           name: DB migrate
           command: heroku run rails db:migrate --app $HEROKU_APP_NAME
-
 
 workflows:
   version: 2
