@@ -65,7 +65,7 @@ jobs:
           maintenance-mode: true
       - run:
           name: DB migrate
-          command: bundle exec rails db:migrate
+          command: heroku run rails db:migrate
 
 
 workflows:
