@@ -63,9 +63,9 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git:
           maintenance-mode: true
-      -run:
-        name: DB migrate
-        command: bundle exec rails db:migrate
+      - run:
+          name: DB migrate
+          command: bundle exec rails db:migrate
 
 
 workflows:
