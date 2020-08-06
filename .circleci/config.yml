@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.0
   node: circleci/node@2
-  heroku: circleci/heroku@1.0.0
+  heroku: circleci/heroku@1.2.0
 
 # setupでまとめる
 commands:
@@ -56,13 +56,14 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
-
   deploy:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+        post-steps:
+          - run: bundle exec rails db:migrate
 
 workflows:
   version: 2
