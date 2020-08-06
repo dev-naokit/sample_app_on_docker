@@ -65,7 +65,7 @@ jobs:
           maintenance-mode: true
       - run:
           name: DB migrate
-          command: heroku run rails db:migrate　--app $HEROKU_APP_NAME
+          command: heroku run rails db:migrate --app $HEROKU_APP_NAME
 
 
 workflows:
