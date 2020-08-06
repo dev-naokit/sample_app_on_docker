@@ -14,21 +14,25 @@ jobs:
           command: bundle -v
       - ruby/bundle-install
 
-deploy:
-  name: Deploy Master to Heroku
-  command: |
-    if [ "${CIRCLE_BRANCH}" == "master" ]; then
-    git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-    fi
-
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Heroku への master のデプロイ
+          command: |
+           git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+    
 workflows:
-  version: 2
-  build-deploy:
+    version: 2
+    build-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
+
+        - build
+        - deploy:
+            requires:
             - build
-          filters:
+            filters:
             branches:
-              only: master
+                only: master
