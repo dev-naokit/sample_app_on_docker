@@ -62,8 +62,6 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
-          post-steps:
-            - run: bundle exec rails db:migrate
 
 workflows:
   version: 2
