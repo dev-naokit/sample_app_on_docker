@@ -9,7 +9,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it "タイトルが表示されること" do
       get root_path
-      expect(response.body).to include "Home | Ruby on Rails Tutorial Sample App"
+      expect(response.body).to match "<title>Ruby on Rails Tutorial Sample App</title>"
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it "タイトルが表示されること" do
       get static_pages_home_path
-      expect(response.body).to include "Home | Ruby on Rails Tutorial Sample App"
+      expect(response.body).to match "<title>Ruby on Rails Tutorial Sample App</title>"
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it "タイトルが表示されること" do
       get static_pages_help_path
-      expect(response.body).to include "Help | Ruby on Rails Tutorial Sample App"
+      expect(response.body).to match "<title>Help | Ruby on Rails Tutorial Sample App</title>"
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it "タイトルが表示されること" do
       get static_pages_about_path
-      expect(response.body).to include "About | Ruby on Rails Tutorial Sample App"
+      expect(response.body).to match  "<title>About | Ruby on Rails Tutorial Sample App</title>"
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it "タイトルが表示されること" do
       get static_pages_contact_path
-      expect(response.body).to include "Contact | Ruby on Rails Tutorial Sample App"
+      expect(response.body).to match "<title>Contact | Ruby on Rails Tutorial Sample App</title>"
     end
   end
 
