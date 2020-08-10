@@ -30,7 +30,7 @@ RSpec.describe "Users", type: :request do
         post users_path, params: { user: valid_params }
         expect(response).to redirect_to user_path(User.last)
       end
-      it "メッセージが表示されること" do
+      it "successメッセージが表示されること" do
         post users_path, params: { user: valid_params }
         follow_redirect!
         expect(response.body).to include "Welcome to the Sample App!"
